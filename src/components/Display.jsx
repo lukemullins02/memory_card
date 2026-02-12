@@ -1,26 +1,26 @@
 import { useState, useEffect } from "react";
+import Card from "./Card";
 
 export default function Display() {
-  const [poke, setPoke] = useState(0);
+  const [poke, setPoke] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       const arr = [];
 
-      for (let i = 0; i < 12; i++) {
+      for (let i = 1; i < 13; i++) {
         const result = await fetch(
-          `https://pokeapi.co/api/v2/pokemon-form/${i + 1}/`,
+          `https://pokeapi.co/api/v2/pokemon-form/${i}/`,
         );
 
         const final = await result.json();
 
         arr.push({
-          id: i + 1,
-          pokeIMG: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${i + 1}.png`,
+          id: i,
+          pokeIMG: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${i}.png`,
           name: final.name,
         });
       }
-
       setPoke(arr);
     };
     fetchData();
@@ -28,5 +28,5 @@ export default function Display() {
 
   console.log(poke);
 
-  return <img />;
+  return <Card poke={poke} />;
 }
