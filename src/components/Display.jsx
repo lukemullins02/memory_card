@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Card from "./Card";
-import Score from "./score";
+import Score from "./Score";
 import { shuffleArr } from "./helper";
 
 export default function Display() {
