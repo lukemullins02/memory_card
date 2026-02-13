@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Card from "./Card";
 import Score from "./score";
+import { shuffleArr } from "./helper";
 
 export default function Display() {
   const [poke, setPoke] = useState([]);
@@ -22,6 +23,8 @@ export default function Display() {
           pokeIMG: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${i}.png`,
           name: final.name,
         });
+
+        shuffleArr(arr);
       }
       setPoke(arr);
     };

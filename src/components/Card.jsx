@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "../styles/card.css";
+import { shuffleArr } from "./helper";
 
 export default function Card({ poke, setScore }) {
   const [arr, setArr] = useState([]);
@@ -7,8 +8,8 @@ export default function Card({ poke, setScore }) {
   const pokeImgs = poke.map((item) => (
     <div
       onClick={() => {
+        shuffleArr(poke);
         if (arr.find((ele) => ele.id === item.id)) {
-          console.log("hello");
           setScore(0);
           setArr([]);
         } else {
