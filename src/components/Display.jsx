@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import Card from "./Card";
+import Score from "./score";
 
 export default function Display() {
   const [poke, setPoke] = useState([]);
+  const [score, setScore] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,5 +30,10 @@ export default function Display() {
 
   console.log(poke);
 
-  return <Card poke={poke} />;
+  return (
+    <>
+      <Score score={score} />
+      <Card poke={poke} setScore={setScore} />
+    </>
+  );
 }
