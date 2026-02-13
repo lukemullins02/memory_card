@@ -2,7 +2,13 @@ import { useState } from "react";
 import "../styles/card.css";
 import { shuffleArr } from "./helper";
 
-export default function Card({ poke, setScore }) {
+export default function Card({
+  poke,
+  setScore,
+  score,
+  setHighScore,
+  highScore,
+}) {
   const [arr, setArr] = useState([]);
 
   const pokeImgs = poke.map((item) => (
@@ -10,6 +16,9 @@ export default function Card({ poke, setScore }) {
       onClick={() => {
         shuffleArr(poke);
         if (arr.find((ele) => ele.id === item.id)) {
+          if (highScore < score) {
+            setHighScore(score);
+          }
           setScore(0);
           setArr([]);
         } else {

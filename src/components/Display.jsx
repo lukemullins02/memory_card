@@ -6,6 +6,7 @@ import { shuffleArr } from "./helper";
 export default function Display() {
   const [poke, setPoke] = useState([]);
   const [score, setScore] = useState(0);
+  const [highScore, setHighScore] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,8 +36,14 @@ export default function Display() {
 
   return (
     <>
-      <Score score={score} />
-      <Card poke={poke} setScore={setScore} />
+      <Score score={score} highScore={highScore} />
+      <Card
+        poke={poke}
+        setScore={setScore}
+        score={score}
+        setHighScore={setHighScore}
+        highScore={highScore}
+      />
     </>
   );
 }

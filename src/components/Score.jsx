@@ -1,3 +1,8 @@
-export default function Score({ score }) {
-  return <p>{score}</p>;
+export default function Score({ score, highScore }) {
+  return (
+    <div>
+      <p>Current Score: {score}</p>
+      <p>High Score: {highScore} </p>
+    </div>
+  );
 }
